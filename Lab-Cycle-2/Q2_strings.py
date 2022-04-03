@@ -37,10 +37,14 @@ print(N)
 k=int(input("Enter a number\t: "))
 M=[]
 for i in range(1,k+1):
-    M.append((k**2)-k)
+    M.append((i**2)-i)
 print(M)
 
 #5)  Sporting the two lists and merging them together
 
 N.sort()
-M.sort() 
+M.sort()
+N=N+M
+N.sort()
+print("Sorted Final List")
+print(N) 
