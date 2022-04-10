@@ -84,38 +84,57 @@ while running :
                 win = False
                 player = 1
 
-
+        present = 0
         for i in state :
             sum = 0
             for j in i :
-                sum = sum + j
-            if sum == 3 :
-                drawVicotry(1)
-                win = True
-            if sum == -3 :
-                drawVicotry(-1)
-                win = True     
+                if present == j :
+                    sum = sum + j
+                else :
+                    present = j
+                    sum = j
+                if sum == 5 :
+                    drawVicotry(1)
+                    win = True
+                if sum == -5 :
+                    drawVicotry(-1)
+                    win = True     
         
-        for j in range(0, 3) :
+        present = 0
+        for j in range(0, 15) :
             sum = 0
             for i in state :
-                sum = sum + i[j]
-            if sum == 3 :
-                drawVicotry(1)
-                win = True
-            if sum == -3 :
-                drawVicotry(-1)
-                win = True
+                if present == i[j] :
+                    sum = sum + i[j]
+                else :
+                    present = i[j]
+                    sum = i[j]
+                if sum == 5 :
+                    drawVicotry(1)
+                    win = True
+                if sum == -5 :
+                    drawVicotry(-1)
+                    win = True
         
-        sum = 0
-        for i in range(0, 3) :
-            sum = sum + state[i][i]
-        if sum == 3 :
-            drawVicotry(1)
-            win = True
-        if sum == -3 :
-            drawVicotry(-1)
-            win = True
+        present = 0
+        i = 14
+        while i >= 0 :
+            sum = 0
+            for k in range(0, 15 - i) :
+                m = i
+                if present == state[m][k] :
+                    sum = sum + state[m][k]
+                else :
+                    present = state[m][k]
+                    sum = state[m][k]
+                m = m + 1
+                if sum == 5 :
+                    drawVicotry(1)
+                    win = True
+                if sum == -5 :
+                    drawVicotry(-1)
+                    win = True
+            i = i - 1 
         
         sum = 0
         for i in range( 0, 3) :
