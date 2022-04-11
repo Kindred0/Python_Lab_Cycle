@@ -120,8 +120,9 @@ while running :
         i = 14
         while i >= 0 :
             sum = 0
+            m = i
             for k in range(0, 15 - i) :
-                m = i
+                
                 if present == state[m][k] :
                     sum = sum + state[m][k]
                 else :
@@ -136,15 +137,61 @@ while running :
                     win = True
             i = i - 1 
         
-        sum = 0
-        for i in range( 0, 3) :
-            sum = sum +state[i][2-i]
-        if sum == 3 :
-            drawVicotry(1)
-            win = True
-        if sum == -3 :
-            drawVicotry(-1)
-            win = True                            
+        present = 0
+        for i in range(0, 15) :
+            m = i 
+            sum = 0
+            for k in range(0, 15 - i) :
+                if present == state[k][m] :
+                    sum = sum + state[k][m]
+                else :
+                    present = state[k][m]
+                    sum = state[k][m]
+                m = m + 1
+                if sum == 5 :
+                    drawVicotry(1)
+                    win = True
+                if sum == -5 :
+                    drawVicotry(-1)
+                    win = True
+
+        present = 0
+        for i in range(0, 15) :
+            n = i
+            m = 0
+            while n >= 0 :
+                if present == state[m][n] :
+                    sum = sum + state[m][n]
+                else :
+                    present = state[m][n]
+                    sum = state[m][n]
+                m = m + 1
+                n = n - 1
+                if sum == 5 :
+                    drawVicotry(1)
+                    win = True
+                if sum == -5 :
+                    drawVicotry(-1)
+                    win = True
+
+        present = 0
+        for i in range(0, 15) :
+            m = 14
+            for k in range(i, 15) :
+                if present == state[k][m] :
+                    sum = sum + state[k][m]
+                else :
+                    present = state[k][m]
+                    sum = state[k][m]
+                m = m - 1
+                if sum == 5 :
+                    drawVicotry(1)
+                    win = True
+                if sum == -5 :
+                    drawVicotry(-1)
+                    win = True
+
+
 
         if event.type == pygame.QUIT :
             running = False
