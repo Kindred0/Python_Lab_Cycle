@@ -1,4 +1,3 @@
-
 import random
 import pygame
 
@@ -89,7 +88,7 @@ for i in State :
 	print(" ")
 
 screen = pygame.display.set_mode([455, 655])
-screen.fill(255,255,255)
+screen.fill((255,255,255))
 pygame.display.set_caption('Mine Sweeper')
 y = 5
 for i in range(0, 15):
@@ -102,8 +101,9 @@ for i in range(0, 15):
 running = True
 
 while running :
-	if event.type == pygame.QUIT :
-        running = False
-        pygame.quit()
-        sys.exit()
-    pygame.display.update()
+	for event in pygame.event.get() :
+		if event.type == pygame.QUIT :
+			running = False
+			pygame.quit()
+			sys.exit()
+	pygame.display.update()
